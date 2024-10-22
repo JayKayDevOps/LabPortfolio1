@@ -1,0 +1,34 @@
+# Give an overall view of what the template will install
+Description: 
+  This template deploys a VPC, with a public and private subnet in Availability Zone us-east-1a.
+  It deploys an internet gateway, with a default route on the public subnet. 
+  It also deploys a default route for the private subnet.
+  This private subnet will only be accesible from the Public EC2 instance 
+
+# The Parameters added are the Environment Name and CIDR blocks
+# The CIDR blocks show the IP Allocation for the VPC, Public and Private subnets
+# Being in the parameters allows them to be edited in the UI at install 
+
+Parameters:
+  EnvironmentName:
+    Description: An environment name that is prefixed to resource names after stack creation
+    Type: String
+  
+  # The VPC CIDR Block provides a pool of IPs, the public and private subnets will get their IPs 
+  # the VPC CIDR allocation
+  VpcCIDR:
+    Description: Please enter the IP range (CIDR notation) for this VPC
+    Type: String
+    Default: 172.20.0.0/16
+
+  PublicSubnetCIDR:
+    Description: Please enter the IP range (CIDR notation) for the public subnet in
+      the first Availability Zone
+    Type: String
+    Default: 172.20.1.0/24
+
+  PrivateSubnetCIDR:
+    Description: Please enter the IP range (CIDR notation) for the private subnet in
+      the first Availability Zone
+    Type: String
+    Default: 172.20.2.0/24
