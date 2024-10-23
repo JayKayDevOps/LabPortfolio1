@@ -215,3 +215,17 @@ Resources:
       Tags:
         - Value: jason-labportfolio1-priv-instance
           Key: Name
+
+Outputs:
+  VPC:
+    Description: A reference to the created VPC
+    Value: !Ref VPC
+
+
+  PublicSubnet:
+    Description: A reference to the public subnet in the 1st Availability Zone
+    Value: !Ref PublicSubnet
+
+  PrivateSubnet:
+    Description: A reference to the private subnet in the 1st Availability Zone
+    Value: !Ref PrivateSubnet
