@@ -163,7 +163,6 @@ Resources:
       GroupDescription: labportfolio1-priv-sg
       GroupName: labportfolio1-priv-sg
       VpcId: !Ref VPC
-      GroupDescription: Allow connections from specified CIDR ranges
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 80
