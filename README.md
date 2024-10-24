@@ -11,27 +11,26 @@ Student No. L00194486
 This readme is to provide a guide on the steps taken to try and best complete the Lab Portfolio 1 project.
 
 Steps:
-1. Create Template in the Cloudformation section of the AWS Console
+1. Create a Template in the Cloudformation section of the AWS Console
 
 2. Add Description and Parameters to the Template
    - The description gives on overall view of what the template will create
    - The parameters include the environment name which will label all the resources when the stack is created
    - The parameters also include the CIDR blocks specifying the IP ranges to be used by the VPC,
-     the Puclic and the Private Subnets.
+     the Public and the Private Subnets.
 
 
 3. Add the Resources
    - The resources need to be added and configured correctly in order for the stack to work
-   - The resources were added in the following order
-   i)    VPC
-   ii)   Internet Gateway and VPC Internet Gateway Attachment
-   iii)  Public and Private Subnet
-   iv)   The NAT Gateway and Elastic IP
-   v)    The Public Route, Public Route Table and Public Route Table Association
-   vi)   The Private Route, Private Route Table and Private Route Table Association
-   vii)  The Security groups for the Public Facing Instance and Private Instance
-   iix)  The SSH Key Pairs to allow access to the EC2 instances
-   ix)   The Public and Private Instance
+   - The resources were added in the following order:
+      -  VPC
+      - Internet Gateway and VPC Internet Gateway Attachment
+      - Public and Private Subnet
+      - The NAT Gateway and Elastic IP
+      - The Public Route, Public Route Table and Public Route Table Association
+      - The Private Route, Private Route Table and Private Route Table Association
+      - The Security groups for the Public Facing Instance and Private Instance
+      - The Public and Private Instance
 
 4. Add the Outputs
    - The outputs show in the AWS stack creation console what was created
