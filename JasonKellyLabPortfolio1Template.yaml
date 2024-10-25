@@ -139,12 +139,12 @@ Resources:
       RouteTableId: !Ref PrivateRouteTable
       SubnetId: !Ref PrivateSubnet
 
-  JumpBoxInstanceSecurityGroup:
+  PublicInstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     DeletionPolicy: Retain
     Properties:
-      GroupDescription: jason-labportfolio1-jumpBox-sg
-      GroupName: jason-labportfolio1-jumpBox-sg
+      GroupDescription: jason-labportfolio1-public-sg
+      GroupName: jason-labportfolio1-public-sg
       VpcId: !Ref VPC
       SecurityGroupIngress:
         - CidrIp: 0.0.0.0/0
@@ -173,39 +173,31 @@ Resources:
           ToPort: 22
           CidrIp: 172.20.1.0/24
 
-  JumpBoxKeyPair:
-    Type: 'AWS::EC2::KeyPair'
-    Properties:
-      KeyName: PublicInstanceKeyPair
 
-  JumpBoxInstance:
+  PublicInstance:
     Type: AWS::EC2::Instance
     Properties:
       SubnetId: !Ref PublicSubnet
       AvailabilityZone: us-east-1a
-      KeyName: !Ref JumpBoxKeyPair
+      KeyName: testKey
       ImageId: ami-0866a3c8686eaeeba
       InstanceType: t2.micro
       SecurityGroupIds:
-        - !GetAtt   JumpBoxInstanceSecurityGroup.GroupId
+        - !GetAtt   PublicInstanceSecurityGroup.GroupId
       VpcId: !Ref VPC
       Monitoring: false
       Tags:
-        - Value: jason-labportfolio1-jumpBox
+        - Value: jason-labportfolio1-publicBox
           Key: Name
 
-  PrivateKeyPair:
-    Type: 'AWS::EC2::KeyPair'
-    Properties:
-      KeyName: PrivateInstanceKeyPair
-
+  
   PrivateEC2Instance:
     Type: AWS::EC2::Instance
     Properties:
       SubnetId: !Ref PrivateSubnet
       AvailabilityZone: us-east-1a
       ImageId: ami-06b21ccaeff8cd686
-      KeyName: !Ref PrivateKeyPair
+      KeyName: testKey
       InstanceType: t2.micro
       SecurityGroupIds:
         - !GetAtt   ServerSecurityGroup.GroupId
